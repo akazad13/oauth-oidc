@@ -1,13 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
   <div class="container">
-    <a class="navbar-brand" [routerLink]="['/home']"
-      ><img
-        src="./logo.svg"
-        alt="Adda logo"
-        style="border: none; max-height: 30px; margin-right: 5px"
-      />
-      Adda</a
-    >
+    <a class="navbar-brand" [routerLink]="['/home']"> Todo</a>
 
     <ul *ngIf="loggedIn" class="navbar-nav me-auto">
       <li class="nav-item" routerLinkActive="active">
@@ -47,7 +40,12 @@
       </div>
     </div>
 
-    <button class="btn btn-success" type="button" *ngIf="!loggedIn">
+    <button
+      class="btn btn-success"
+      type="button"
+      *ngIf="!loggedIn"
+      (click)="login()"
+    >
       Login
     </button>
   </div>

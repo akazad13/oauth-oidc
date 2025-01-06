@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
-import {
-  AuthConfig,
-  JwksValidationHandler,
-  OAuthService,
-} from 'angular-oauth2-oidc';
+import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
+import { JwksValidationHandler } from 'angular-oauth2-oidc-jwks';
 import { BehaviorSubject } from 'rxjs';
 import { Constants } from '../constants';
 import { Auth } from '../interface/auth';

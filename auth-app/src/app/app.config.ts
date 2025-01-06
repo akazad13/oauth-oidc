@@ -20,7 +20,7 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom([
       OAuthModule.forRoot({
         resourceServer: {
-          allowedUrls: ['http://localhost:8081/api', 'http://localhost:4200'],
+          allowedUrls: ['https://localhost:7169/api', 'http://localhost:4200'],
           sendAccessToken: true,
         },
       }),

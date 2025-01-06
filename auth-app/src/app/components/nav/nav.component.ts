@@ -1,7 +1,6 @@
-import { Component, Injector, OnDestroy, OnInit } from '@angular/core';
-import { firstValueFrom, Subscription } from 'rxjs';
+import { Component, Injector, OnInit } from '@angular/core';
 import { Auth } from '../../interface/auth';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { AlertifyService } from '../../services/alertify.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -68,7 +67,7 @@ export class NavComponent implements OnInit {
     });
   }
 
-  public login(): void {
+  login(): void {
     this.authService.login();
   }
 

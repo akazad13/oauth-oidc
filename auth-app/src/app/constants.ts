@@ -7,7 +7,7 @@ export class Constants {
   private static readonly realmName = 'corpauth';
   public static readonly webRoot = 'http://localhost:4200';
   public static readonly idmRoot = 'http://localhost:8080';
-  public static readonly authUrl = `${Constants.idmRoot}/auth/realms/${Constants.realmName}`;
+  public static readonly authUrl = `${Constants.idmRoot}/realms/${Constants.realmName}`;
   public static readonly redirectV1Uri = `${Constants.webRoot}/todos`;
   public static readonly redirectV2Uri = `${Constants.webRoot}/signin`;
   public static readonly signoutV2Uri = `${Constants.webRoot}/signout`;
