@@ -17,6 +17,9 @@ export class AuthV2Service implements Auth {
   private readonly userSource = new BehaviorSubject(this.appUser);
   userSource$ = this.userSource.asObservable();
 
+  private readonly logoutSubject = new BehaviorSubject(false);
+  logout$ = this.logoutSubject.asObservable();
+
   messageSource = new BehaviorSubject(String());
   messageSource$ = this.messageSource.asObservable();
 

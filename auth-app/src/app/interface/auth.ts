@@ -4,6 +4,7 @@ import { User } from '../models/user';
 export interface Auth {
   // Observable User stream
   userSource$: Observable<User>;
+  logout$: Observable<boolean>;
 
   /**
    * OAuth login function

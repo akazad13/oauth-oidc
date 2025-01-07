@@ -19,7 +19,7 @@ namespace TodoApp.Controllers
                 var client = _httpClientFactory.CreateClient();
 
                 // Specify the token endpoint URL
-                var tokenEndpoint = "http://localhost:8080/realms/Omar/protocol/openid-connect/token";
+                var tokenEndpoint = "http://localhost:8080/realms/corpauth/protocol/openid-connect/token";
 
                 // Prepare the request content (form-urlencoded) with required parameters
                 var requestContent = new FormUrlEncodedContent(new[]

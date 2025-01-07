@@ -15,6 +15,9 @@ export class AuthV1Service implements Auth {
   private readonly userSource = new BehaviorSubject(this.user);
   userSource$ = this.userSource.asObservable();
 
+  private readonly logoutSubject = new BehaviorSubject(false);
+  logout$ = this.logoutSubject.asObservable();
+
   constructor(private readonly oauthService: OAuthService) {
     this.configure();
   }
@@ -40,9 +43,9 @@ export class AuthV1Service implements Auth {
   }
 
   public async isLoggedIn(): Promise<boolean> {
-    if (this.oauthService.hasValidAccessToken()) {
+    const hasValidAccessToken = this.oauthService.hasValidAccessToken();
+    if (hasValidAccessToken) {
       const userinfo = await this.oauthService.loadUserProfile();
-      console.log(userinfo);
       const loggedIn = !!userinfo;
       return loggedIn;
     } else {
@@ -52,20 +55,26 @@ export class AuthV1Service implements Auth {
     }
   }
 
-  public getUserInfo() {
+  public async getUserInfo() {
     if (!this.user) {
-      if (this.oauthService.hasValidAccessToken()) {
-        this.oauthService.loadUserProfile().then((userInfo: any) => {
+      const hasValidAccessToken = this.oauthService.hasValidAccessToken();
+      if (hasValidAccessToken) {
+        try {
+          const userInfo: any = await this.oauthService.loadUserProfile();
           this.user = new User(
-            userInfo['name'],
-            userInfo['title'],
-            userInfo['email'],
-            userInfo['preferred_username'],
-            userInfo['jpegPhoto']
+            userInfo.info['name'],
+            userInfo.info['title'],
+            userInfo.info['email'],
+            userInfo.info['preferred_username'],
+            userInfo.info['jpegPhoto']
           );
 
           this.userSource.next(this.user);
-        });
+        } catch (error) {
+          this.logoutSubject.next(true);
+        }
+      } else {
+        this.logoutSubject.next(true);
       }
     }
   }

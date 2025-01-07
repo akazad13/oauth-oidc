@@ -2,26 +2,7 @@
   <div class="container">
     <a class="navbar-brand" [routerLink]="['/home']"> Todo</a>
 
-    <ul *ngIf="loggedIn" class="navbar-nav me-auto">
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/members']">Members</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/lists']">My Bookmarks</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/messages']">Messages</a>
-      </li>
-      <li
-        *appHasRole="['Admin', 'Moderator']"
-        class="nav-item"
-        routerLinkActive="active"
-      >
-        <a class="nav-link" [routerLink]="['/admin']">Admin</a>
-      </li>
-    </ul>
-
-    <div *ngIf="loggedIn" class="dropdown" dropdown>
+    <div class="dropdown" dropdown *ngIf="userInfo">
       <span class="me-1">
         <img src="{{ 'data:image/jpg;base64,' + photo }}" alt="avatar" />
       </span>
@@ -30,23 +11,10 @@
       </a>
 
       <div class="dropdown-menu mt-3" *dropdownMenu>
-        <a class="dropdown-item" [routerLink]="['/member/edit']"
-          ><i class="fa fa-user"></i> Edit Profile</a
-        >
-        <div class="dropdown-divider"></div>
         <a class="dropdown-item" (click)="logout()"
           ><i class="fa fa-sign-out"></i> Logout</a
         >
       </div>
     </div>
-
-    <button
-      class="btn btn-success"
-      type="button"
-      *ngIf="!loggedIn"
-      (click)="login()"
-    >
-      Login
-    </button>
   </div>
 </nav>
