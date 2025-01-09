@@ -50,7 +50,7 @@ namespace TodoApp.Controllers
             var roles = realmAccessRoles != null ? GetRolesFromRealmAccess(realmAccessRoles) : [];
 
             // Check if the "Admin" role is present in the roles
-            var allowed = roles.Contains("development") || roles.Contains("management");
+            var allowed = roles.Contains("development") || roles.Contains("management") || roles.Contains("default-roles-corpauth ");
 
             var todos = _todos;
       

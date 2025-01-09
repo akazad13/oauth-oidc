@@ -93,5 +93,6 @@ export class AuthV1Service implements Auth {
     this.oauthService.configure(this.authConfig);
     this.oauthService.tokenValidationHandler = new JwksValidationHandler();
     this.oauthService.loadDiscoveryDocumentAndTryLogin();
+    this.oauthService.setupAutomaticSilentRefresh();
   }
 }
